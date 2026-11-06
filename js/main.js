@@ -49,7 +49,9 @@
     endY = clamp(endY, 0, maxY);
     var dist = Math.abs(endY - startY);
     if (dist < 4) return;
-    var dur = clamp(500 + dist * 0.8, 600, 2500);
+    var dur = lastDir > 0
+      ? clamp(1100 + dist * 1.6, 1300, 4500)
+      : clamp(500 + dist * 0.8, 600, 2500);
     var t0 = performance.now();
     autoScrolling = true;
     autoRAF = requestAnimationFrame(function step(now) {
